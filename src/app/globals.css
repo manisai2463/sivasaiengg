@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0057B8;
+  --color-secondary: #00B4D8;
+  --color-accent: #FFD60A;
+  --color-background-dark: #0B0F19;
+  --color-card-bg: rgba(13, 19, 33, 0.75);
+  
+  --font-sans: 'Outfit', 'Inter', var(--font-geist-sans), sans-serif;
+  --font-mono: 'Space Mono', var(--font-geist-mono), monospace;
+
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 35s linear infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+/* Custom styles and scrollbars */
+html {
+  scroll-behavior: smooth;
+  background-color: #0B0F19;
+}
+
+body {
+  color: #f8fafc;
+  background-color: #0B0F19;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 5px;
+  border: 2px solid #0B0F19;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0057B8;
+}
+
+/* Glassmorphism card utilities */
+.glass-panel {
+  background: rgba(13, 19, 33, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(17, 25, 45, 0.85);
+  border-color: rgba(0, 180, 216, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Text glow effects */
+.glow-text-cyan {
+  text-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+}
+
+.glow-text-yellow {
+  text-shadow: 0 0 10px rgba(255, 214, 10, 0.4);
+}
+
+.glow-text-blue {
+  text-shadow: 0 0 10px rgba(0, 87, 184, 0.4);
+}
+
+/* Shimmer overlay for buttons */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 55%
+  );
+  transform: rotate(45deg);
+  transition: transform 0.5s ease;
+}
+
+.shimmer-btn:hover::after {
+  transform: translate(50%, 50%) rotate(45deg);
+}
+
+/* India Map Hover States */
+.state-path {
+  transition: fill 0.25s ease, stroke 0.25s ease;
+}
+.state-path:hover {
+  fill: rgba(255, 255, 255, 0.12) !important;
+  stroke: rgba(255, 255, 255, 0.35) !important;
+}
+.state-path.active-state:hover {
+  fill: rgba(0, 180, 216, 0.45) !important;
+  stroke: rgba(0, 224, 255, 0.95) !important;
+}
+
+/* Skip link utility — visible on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 60;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+  white-space: nowrap;
+}

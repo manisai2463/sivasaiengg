@@ -1,0 +1,119 @@
+'use client';
+
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, MapPin, Shield, Zap, Briefcase } from 'lucide-react';
+import { COMPLETED_PROJECTS } from '@/data/profileData';
+
+type CategoryFilter = 'All' | 'Nuclear & Utility' | 'CPP & Heavy Industry' | 'Cogeneration & Process';
+
+export default function ProjectShowcase() {
+  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const filteredProjects = useMemo(() => {
+    return COMPLETED_PROJECTS.filter((project) => {
+      const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
+      const query = searchQuery.toLowerCase();
+      const matchesSearch =
+        project.clientName.toLowerCase().includes(query) ||
+        project.title.toLowerCase().includes(query) ||
+        project.location.toLowerCase().includes(query) ||
+        project.capacity.toLowerCase().includes(query);
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
+
+  return (
+    <div className="space-y-8">
+      {/* Filters and Search Bar */}
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-[#0e1424]/40 border border-white/5 p-4 rounded-2xl backdrop-blur-sm">
+        {/* Categories Grid */}
+        <div className="flex flex-wrap gap-2 w-full md:w-auto">
+          {(['All', 'Nuclear & Utility', 'CPP & Heavy Industry', 'Cogeneration & Process'] as CategoryFilter[]).map(
+            (category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide border transition-all duration-200 cursor-pointer ${
+                  selectedCategory === category
+                    ? 'bg-primary border-secondary/35 text-white shadow-lg'
+                    : 'bg-white/5 border-white/5 text-gray-400 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {category}
+              </button>
+            )
+          )}
+        </div>
+
+        {/* Search Input */}
+        <div className="relative w-full md:w-80">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search projects by client, site..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-[#070b13] border border-white/10 pl-10 pr-4 py-2.5 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-secondary transition-all"
+          />
+        </div>
+      </div>
+
+      {/* Grid count summary */}
+      <div className="text-xs text-gray-500 font-mono pl-1">
+        Showing {filteredProjects.length} of {COMPLETED_PROJECTS.length} verified corporate installations
+      </div>
+
+      {/* Projects Grid */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project) => (
+            <motion.div
+              layout
+              key={project.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4 }}
+              className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden"
+            >
+              {/* Badge for nuclear/large-scale */}
+              <div className="absolute top-0 right-0 bg-primary/10 border-b border-l border-white/5 rounded-bl-xl px-3 py-1 flex items-center gap-1">
+                {project.category === 'Nuclear & Utility' ? (
+                  <Shield className="w-3 h-3 text-accent" />
+                ) : (
+                  <Zap className="w-3 h-3 text-secondary" />
+                )}
+                <span className="text-[10px] text-gray-300 font-mono uppercase tracking-wider">{project.capacity}</span>
+              </div>
+
+              <div>
+                <h4 className="text-white font-bold text-lg mb-2 leading-snug group-hover:text-secondary pr-16 pt-2">
+                  {project.title}
+                </h4>
+                <p className="text-xs text-gray-400 mb-5 leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+
+              <div className="space-y-3 pt-4 border-t border-white/5">
+                {/* Client detail */}
+                <div className="flex gap-2 items-center text-xs">
+                  <Briefcase className="w-3.5 h-3.5 text-secondary shrink-0" />
+                  <span className="text-gray-300 font-medium truncate">{project.clientName}</span>
+                </div>
+
+                {/* Location detail */}
+                <div className="flex gap-2 items-center text-xs">
+                  <MapPin className="w-3.5 h-3.5 text-accent shrink-0" />
+                  <span className="text-gray-400 truncate">{project.location}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </div>
+  );
+}
