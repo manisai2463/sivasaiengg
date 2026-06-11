@@ -140,12 +140,12 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-4 md:pb-0 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-full -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth md:grid md:grid-cols-3 gap-5 pb-4 md:pb-0 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-full -mx-4 px-4 md:mx-0 md:px-0">
             {EXPERT_TEAM.slice(2).map((member) => (
-              <div key={member.name} className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/5 flex flex-col justify-between w-[290px] shrink-0 md:w-auto md:shrink">
+              <div key={member.name} className="glass-panel glass-panel-hover p-5 rounded-2xl border border-white/5 flex flex-col justify-between w-[270px] min-w-[270px] snap-start shrink-0 md:w-auto md:min-w-0 md:shrink">
                 <div className="flex flex-col gap-3">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
-                    <span className={`px-2 py-0.5 rounded text-[9px] font-mono tracking-wider uppercase border ${
+                    <span className={`inline-flex items-center gap-1 shrink-0 px-2 py-0.5 rounded text-[9px] font-mono tracking-wider uppercase border ${
                       member.background === 'Siemens'
                         ? 'bg-blue-500/10 border-blue-500/20 text-blue-400'
                         : 'bg-orange-500/10 border-orange-500/20 text-orange-400'
@@ -154,7 +154,7 @@ export default function AboutPage() {
                     </span>
                     <span className="text-[10px] text-gray-500 font-mono font-semibold">{member.experience}</span>
                   </div>
-                  <h4 className="text-white font-bold text-base mt-2">{member.name}</h4>
+                  <h4 className="text-white font-semibold text-base mt-2">{member.name}</h4>
                   <span className="text-xs text-secondary font-mono font-medium">{member.role}</span>
                 </div>
                 <p className="text-xs text-gray-400 leading-relaxed border-t border-white/5 pt-4 mt-4">

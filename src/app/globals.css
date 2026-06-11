@@ -68,13 +68,14 @@ body {
 
 .glass-panel-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
 }
 
 .glass-panel-hover:hover {
   background: rgba(17, 25, 45, 0.85);
   border-color: rgba(0, 180, 216, 0.3);
   box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.2);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 /* Text glow effects */

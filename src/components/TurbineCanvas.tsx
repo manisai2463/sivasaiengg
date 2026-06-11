@@ -236,24 +236,27 @@ export default function TurbineCanvas() {
           {/* Mobile Telemetry Grid (Shown above sliders on mobile to prevent scrolling) */}
           <div className="grid grid-cols-3 gap-3 w-full mt-4 px-2 lg:hidden">
             {/* MW output */}
-            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-0.5 relative overflow-hidden">
+            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
               <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Est. Power</span>
-              <span className="text-base font-extrabold text-accent font-mono truncate">{mw} MW</span>
+              <span className="text-base font-extrabold text-accent font-mono">{mw}</span>
+              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">MW</span>
             </div>
 
             {/* Grid frequency */}
-            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-0.5 relative overflow-hidden">
+            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
               <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Frequency</span>
-              <span className="text-base font-extrabold text-secondary font-mono truncate">{hz} Hz</span>
+              <span className="text-base font-extrabold text-secondary font-mono">{hz}</span>
+              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">Hz</span>
             </div>
 
             {/* Vibration */}
-            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-0.5 relative overflow-hidden">
+            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
               <div className="flex justify-between items-center w-full">
                 <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Vib.</span>
                 <span className={`w-1.5 h-1.5 rounded-full ${vibration > 1.8 ? 'bg-red-400 animate-ping' : 'bg-green-400'}`} />
               </div>
-              <span className="text-base font-extrabold text-white font-mono truncate">{vibration} mm/s</span>
+              <span className="text-base font-extrabold text-white font-mono">{vibration}</span>
+              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">mm/s</span>
             </div>
           </div>
 
@@ -318,14 +321,16 @@ export default function TurbineCanvas() {
             <div className="bg-[#0e1424]/40 border border-white/5 p-4 rounded-2xl flex flex-col gap-1 relative overflow-hidden">
               <Zap className="w-10 h-10 text-accent/10 absolute right-1.5 bottom-1.5 pointer-events-none" />
               <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Estimated Power</span>
-              <span className="text-2xl font-black text-accent font-mono">{mw} MW</span>
+              <span className="text-3xl font-black text-accent font-mono">{mw}</span>
+              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">MW</span>
             </div>
 
             {/* Grid frequency */}
             <div className="bg-[#0e1424]/40 border border-white/5 p-4 rounded-2xl flex flex-col gap-1 relative overflow-hidden">
               <Activity className="w-10 h-10 text-secondary/10 absolute right-1.5 bottom-1.5 pointer-events-none" />
               <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Frequency</span>
-              <span className="text-2xl font-black text-secondary font-mono">{hz} Hz</span>
+              <span className="text-3xl font-black text-secondary font-mono">{hz}</span>
+              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">Hz</span>
             </div>
 
             {/* Vibration */}
@@ -336,7 +341,8 @@ export default function TurbineCanvas() {
                   {vibration > 1.8 ? 'WARNING: HIGH' : 'NORMAL'}
                 </span>
               </div>
-              <span className="text-xl font-bold text-white font-mono mt-1">{vibration} mm/s</span>
+              <span className="text-xl font-bold text-white font-mono mt-1">{vibration}</span>
+              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">mm/s</span>
               {/* Micro graph visualizer */}
               <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden mt-2">
                 <div

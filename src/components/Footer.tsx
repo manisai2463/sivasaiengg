@@ -98,7 +98,7 @@ export default function Footer() {
             
             <div className="flex flex-col gap-4 text-xs sm:text-sm">
               {/* Phone & Email side-by-side on mobile and desktop */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-4">
                 {/* Phone Contacts */}
                 <div className="flex gap-2.5 items-start">
                   <Phone className="w-3.5 h-3.5 text-accent mt-0.5 shrink-0" />
@@ -115,10 +115,10 @@ export default function Footer() {
                 {/* Email Contacts */}
                 <div className="flex gap-2.5 items-start">
                   <Mail className="w-3.5 h-3.5 text-accent mt-0.5 shrink-0" />
-                  <div className="flex flex-col max-w-[140px] truncate sm:max-w-full">
+                  <div className="flex flex-col">
                     <span className="text-gray-500 font-mono text-[9px] uppercase tracking-wider block mb-1">Email</span>
                     {EMAILS.slice(0, 2).map(email => (
-                      <a key={email} href={`mailto:${email}`} className="text-gray-300 hover:text-white transition-colors truncate leading-tight block" title={email}>
+                      <a key={email} href={`mailto:${email}`} className="text-gray-300 hover:text-white transition-colors leading-tight break-words block" title={email}>
                         {email}
                       </a>
                     ))}
