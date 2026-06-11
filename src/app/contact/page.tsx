@@ -61,23 +61,23 @@ export default function ContactPage() {
             initial={{ opacity: 0, x: -25 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 flex flex-col gap-6"
+            className="lg:col-span-5 flex flex-col"
           >
             {/* Contacts Directory */}
-            <div className="glass-panel p-6 rounded-2xl border border-white/5 space-y-6 flex-1 flex flex-col justify-between">
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/5 space-y-4 flex-1 flex flex-col justify-between">
               <div>
-                <h3 className="text-white font-bold text-lg border-b border-white/5 pb-3 font-mono tracking-wide">
+                <h3 className="text-white font-bold text-base border-b border-white/5 pb-2.5 font-mono tracking-wide">
                   SSES Directory
                 </h3>
 
-                <div className="space-y-6 mt-6">
+                <div className="space-y-4 mt-4">
                   {/* Phones */}
-                  <div className="flex gap-4 items-start">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      <Phone className="w-4 h-4 text-accent" />
+                  <div className="flex gap-3 items-start">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      <Phone className="w-3.5 h-3.5 text-accent" />
                     </div>
-                    <div className="flex flex-col text-sm">
-                      <span className="text-gray-500 font-mono text-[10px] uppercase">Phone Contacts</span>
+                    <div className="flex flex-col text-xs sm:text-sm">
+                      <span className="text-gray-500 font-mono text-[9px] uppercase">Phone Contacts</span>
                       {PHONE_NUMBERS.map(phone => (
                         <a key={phone} href={`tel:${phone.replace(/\s+/g, '')}`} className="text-gray-300 hover:text-white transition-colors mt-0.5">
                           {phone}
@@ -87,12 +87,12 @@ export default function ContactPage() {
                   </div>
 
                   {/* Emails */}
-                  <div className="flex gap-4 items-start">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      <Mail className="w-4 h-4 text-accent" />
+                  <div className="flex gap-3 items-start">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      <Mail className="w-3.5 h-3.5 text-accent" />
                     </div>
-                    <div className="flex flex-col text-sm">
-                      <span className="text-gray-500 font-mono text-[10px] uppercase">Emails</span>
+                    <div className="flex flex-col text-xs sm:text-sm">
+                      <span className="text-gray-500 font-mono text-[9px] uppercase">Emails</span>
                       {EMAILS.map(email => (
                         <a key={email} href={`mailto:${email}`} className="text-gray-300 hover:text-white transition-colors mt-0.5 break-all">
                           {email}
@@ -102,63 +102,76 @@ export default function ContactPage() {
                   </div>
 
                   {/* Head Office AP */}
-                  <div className="flex gap-4 items-start">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      <MapPin className="w-4 h-4 text-accent" />
+                  <div className="flex gap-3 items-start">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      <MapPin className="w-3.5 h-3.5 text-accent" />
                     </div>
-                    <div className="flex flex-col text-sm leading-normal">
-                      <span className="text-gray-500 font-mono text-[10px] uppercase">Head Office (Vijayawada)</span>
-                      <span className="text-gray-300 mt-1">{OFFICE_CONTACTS[0].address}</span>
-                      <span className="text-[10px] font-mono text-gray-500 mt-1">GSTIN: {OFFICE_CONTACTS[0].gstin}</span>
+                    <div className="flex flex-col text-xs sm:text-sm leading-normal">
+                      <span className="text-gray-500 font-mono text-[9px] uppercase">Head Office (Vijayawada)</span>
+                      <span className="text-gray-300 mt-0.5">{OFFICE_CONTACTS[0].address}</span>
+                      <span className="text-[9px] font-mono text-gray-500 mt-0.5">GSTIN: {OFFICE_CONTACTS[0].gstin}</span>
                     </div>
                   </div>
 
                   {/* Branch Office Surat */}
-                  <div className="flex gap-4 items-start">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      <MapPin className="w-4 h-4 text-accent" />
+                  <div className="flex gap-3 items-start">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      <MapPin className="w-3.5 h-3.5 text-accent" />
                     </div>
-                    <div className="flex flex-col text-sm leading-normal">
-                      <span className="text-gray-500 font-mono text-[10px] uppercase">Surat Branch (Gujarat)</span>
-                      <span className="text-gray-300 mt-1">{OFFICE_CONTACTS[1].address}</span>
-                      <span className="text-[10px] font-mono text-gray-500 mt-1">GSTIN: {OFFICE_CONTACTS[1].gstin}</span>
+                    <div className="flex flex-col text-xs sm:text-sm leading-normal">
+                      <span className="text-gray-500 font-mono text-[9px] uppercase">Surat Branch (Gujarat)</span>
+                      <span className="text-gray-300 mt-0.5">{OFFICE_CONTACTS[1].address}</span>
+                      <span className="text-[9px] font-mono text-gray-500 mt-0.5">GSTIN: {OFFICE_CONTACTS[1].gstin}</span>
+                    </div>
+                  </div>
+
+                  {/* Branch Office Kanyakumari */}
+                  <div className="flex gap-3 items-start">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      <MapPin className="w-3.5 h-3.5 text-accent" />
+                    </div>
+                    <div className="flex flex-col text-xs sm:text-sm leading-normal">
+                      <span className="text-gray-500 font-mono text-[9px] uppercase">Kanyakumari Branch (Tamil Nadu)</span>
+                      <span className="text-gray-300 mt-0.5">{OFFICE_CONTACTS[2]?.address}</span>
+                      <span className="text-[9px] font-mono text-gray-500 mt-0.5">GSTIN: {OFFICE_CONTACTS[2]?.gstin}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-[#0e1424]/60 border border-white/5 p-4 rounded-xl flex items-center gap-3 text-xs text-gray-500 leading-relaxed font-mono mt-6">
-                <Shield className="w-5 h-5 text-primary shrink-0" />
+              {/* Google Maps block inside Directory */}
+              <div className="relative rounded-xl border border-white/5 h-40 overflow-hidden shadow-inner my-2">
+                <iframe 
+                  src="https://maps.google.com/maps?q=16.543546,80.643612&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  className="absolute inset-0 w-full h-full opacity-70 hover:opacity-90 transition-opacity"
+                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) grayscale(30%) contrast(90%)' }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                
+                <div className="absolute bottom-2 left-2 right-2 z-10 bg-[#070b13]/90 p-2 rounded-lg border border-white/5 flex justify-between items-center text-[10px]">
+                  <div className="flex gap-1.5 items-center">
+                    <MapPin className="w-3.5 h-3.5 text-accent animate-bounce shrink-0" />
+                    <div>
+                      <strong className="text-white block font-mono text-[8px] leading-none mb-0.5">VIJAYAWADA HEAD OFFICE</strong>
+                      <span className="text-gray-400 text-[9px] leading-none">Pipula Road, Ajith Singh Nagar</span>
+                    </div>
+                  </div>
+                  <a
+                    href="https://www.google.com/maps?q=16.543546312037645,80.64361267802512"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary/20 border border-primary/30 text-white font-mono px-2 py-1 rounded hover:bg-primary transition-colors cursor-pointer text-[8px]"
+                  >
+                    OPEN MAPS
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-[#0e1424]/60 border border-white/5 p-3 rounded-xl flex items-center gap-2.5 text-[10px] sm:text-xs text-gray-500 leading-relaxed font-mono">
+                <Shield className="w-4.5 h-4.5 text-primary shrink-0" />
                 <span>GST Registered and EPF/ESI Compliant. Fully certified for nuclear and heavy industry utility plant access.</span>
-              </div>
-            </div>
-
-            {/* Google Maps link block */}
-            <div className="glass-panel p-4 rounded-2xl border border-white/5 h-48 relative overflow-hidden flex flex-col justify-end shadow-xl">
-              <div className="absolute inset-0 bg-slate-900 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none" />
-              
-              <svg className="absolute inset-0 w-full h-full text-slate-800/40" viewBox="0 0 400 200">
-                <path d="M 50 150 Q 200 80 350 120" stroke="rgba(0,180,216,0.3)" strokeWidth="1.5" fill="none" />
-                <circle cx="50" cy="150" r="3" fill="#FFD60A" />
-                <circle cx="350" cy="120" r="3" fill="#00B4D8" />
-              </svg>
-
-              <div className="relative z-10 bg-[#070b13]/85 p-3.5 rounded-xl border border-white/5 flex justify-between items-center text-xs">
-                <div className="flex gap-2.5 items-center">
-                  <MapPin className="w-5 h-5 text-accent animate-bounce" />
-                  <div>
-                    <strong className="text-white block font-mono text-[10px]">VIJAYAWADA HEADQUARTERS</strong>
-                    <span className="text-gray-400">Pipula Road, Ajith Singh Nagar</span>
-                  </div>
-                </div>
-                <a
-                  href="https://www.google.com/maps?q=16.543546312037645,80.64361267802512"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-primary/20 border border-primary/30 text-white font-mono px-3 py-1.5 rounded-lg text-[10px] hover:bg-primary transition-colors cursor-pointer"
-                >
-                  OPEN MAPS
-                </a>
               </div>
             </div>
           </motion.div>

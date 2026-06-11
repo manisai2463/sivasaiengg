@@ -12,9 +12,9 @@ export default function Timeline() {
     <div className="relative">
       {/* Central line */}
       <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent -translate-x-1/2 hidden md:block" />
-      <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent -translate-x-1/2 md:hidden" />
+      <div className="absolute left-9 top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent -translate-x-1/2 md:hidden" />
 
-      <div className="space-y-12">
+      <div className="space-y-6 md:space-y-12">
         {COMPANY_HISTORY.map((item, index) => {
           const Icon = icons[index % icons.length];
           const isEven = index % 2 === 0;
@@ -22,29 +22,29 @@ export default function Timeline() {
           return (
             <div
               key={item.year}
-              className={`flex flex-col md:flex-row items-stretch ${
+              className={`flex flex-row md:flex-row items-stretch ${
                 isEven ? 'md:flex-row-reverse' : ''
               }`}
             >
               {/* Left/Right empty column for alignment */}
-              <div className="w-full md:w-1/2" />
+              <div className="hidden md:block md:w-1/2" />
 
               {/* Central icon indicator */}
-              <div className="relative z-10 flex items-center justify-center shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#111827] border-2 border-secondary shadow-[0_0_15px_rgba(0,180,216,0.3)] mx-6 md:mx-0 my-4 md:my-0 self-start md:self-center">
-                <Icon className="w-5 h-5 md:w-6 md:h-6 text-accent" />
+              <div className="relative z-10 flex items-center justify-center shrink-0 w-10 h-10 md:w-16 md:h-16 rounded-full bg-[#111827] border-2 border-secondary shadow-[0_0_15px_rgba(0,180,216,0.3)] ml-4 mr-2 md:mx-0 my-2 md:my-0 self-start md:self-center">
+                <Icon className="w-4 h-4 md:w-6 md:h-6 text-accent" />
               </div>
 
               {/* Content Card */}
-              <div className="w-full md:w-1/2 px-6 md:px-10 flex">
+              <div className="flex-1 md:w-1/2 pl-2 pr-4 md:px-10 flex">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="glass-panel glass-panel-hover p-6 rounded-2xl relative w-full flex flex-col justify-between"
+                  className="glass-panel glass-panel-hover p-4 md:p-6 rounded-2xl relative w-full flex flex-col justify-between"
                 >
                   {/* Decorative glowing marker */}
-                  <div className="absolute top-6 -left-2 w-4 h-4 bg-secondary rotate-45 rounded-sm border-l border-b border-white/5 md:hidden" />
+                  <div className="absolute top-5 -left-2 w-3.5 h-3.5 bg-secondary rotate-45 rounded-sm border-l border-b border-white/5 md:hidden" />
                   
                   {isEven ? (
                     <div className="absolute top-1/2 -left-2 w-4 h-4 bg-secondary rotate-45 rounded-sm border-l border-b border-white/5 hidden md:block -translate-y-1/2" />
@@ -53,13 +53,13 @@ export default function Timeline() {
                   )}
 
                   <div>
-                    <span className="inline-block text-accent font-mono font-bold text-lg md:text-xl tracking-wider mb-2 glow-text-yellow">
+                    <span className="inline-block text-accent font-mono font-bold text-sm md:text-xl tracking-wider mb-1 md:mb-2 glow-text-yellow">
                       {item.year}
                     </span>
-                    <h3 className="text-white font-bold text-lg md:text-xl mb-3">
+                    <h3 className="text-white font-bold text-sm md:text-xl mb-1.5 md:mb-3 leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
+                    <p className="text-[11px] md:text-sm text-gray-400 leading-normal md:leading-relaxed">
                       {item.description}
                     </p>
                   </div>

@@ -79,7 +79,7 @@ export default function WhyChooseUsPage() {
         </div>
 
         {/* Content Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center mb-10 sm:mb-20">
           
           {/* Left Text Detail */}
           <motion.div
@@ -119,18 +119,18 @@ export default function WhyChooseUsPage() {
             initial={{ opacity: 0, x: 25 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5"
+            className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-5"
           >
             {points.map((item) => {
               const IconComp = item.icon;
               return (
-                <div key={item.title} className="glass-panel p-6 rounded-2xl border border-white/5 flex flex-col gap-4">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${item.color}`}>
-                    <IconComp className="w-5 h-5" />
+                <div key={item.title} className="glass-panel p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 flex flex-col gap-3 sm:gap-4">
+                  <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center border ${item.color}`}>
+                    <IconComp className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-sm mb-2">{item.title}</h3>
-                    <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-white font-bold text-xs sm:text-sm mb-1 sm:mb-2 leading-tight">{item.title}</h3>
+                    <p className="text-[10px] sm:text-xs text-gray-400 leading-normal sm:leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               );

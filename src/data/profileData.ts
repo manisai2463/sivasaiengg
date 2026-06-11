@@ -117,8 +117,9 @@ export const OFFICE_CONTACTS: Office[] = [
     type: "Branch Office",
     location: "Kanyakumari, Tamil Nadu",
     pin: "629401",
-    address: "Door No. 6-27, E-5, Vasantham Compound, Anjugramam (PO), Kanyakumari District, Tamil Nadu",
-    email: "siva.sai9999@yahoo.in"
+    address: "Building No. 6/27G-4, Vasantham Compound, Anjugramam, Kanniyakumari District, Tamil Nadu",
+    email: "siva.sai9999@yahoo.in",
+    gstin: "33ABXFS0833M3ZK"
   }
 ];
 
@@ -145,6 +146,13 @@ export const EXPERT_TEAM: TeamMember[] = [
     role: "Founder & Managing Partner",
     experience: "28+ Years Experience",
     details: "Holds a Diploma in Mechanical Engineering. Began his career in 1998 as a megawatt turbine technician. Founded SSES in 2011, guiding it to execute 120+ projects up to 1000 MW, including extensive nuclear turbine works.",
+    background: "SSES"
+  },
+  {
+    name: "Mrs. Anitha Mucharla",
+    role: "Partner",
+    experience: "Partner",
+    details: "As a Partner of the company, she contributes to the organization's vision and long-term growth while supporting its commitment to integrity, excellence, and sustainable business practices.",
     background: "SSES"
   },
   {

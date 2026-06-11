@@ -98,18 +98,18 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3 }}
-                  className="flex flex-wrap gap-4 mt-2"
+                  className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto"
                 >
                   <Link
                     href="/services"
-                    className="bg-primary hover:bg-primary/95 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 border border-secondary/20 shadow-[0_0_15px_rgba(0,87,184,0.3)] hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] cursor-pointer shimmer-btn flex items-center gap-1.5"
+                    className="bg-primary hover:bg-primary/95 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 border border-secondary/20 shadow-[0_0_15px_rgba(0,87,184,0.3)] hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] cursor-pointer shimmer-btn flex items-center justify-center gap-1.5 w-full sm:w-auto"
                   >
                     Explore Services
                     <ChevronRight className="w-4 h-4" />
                   </Link>
                   <Link
                     href="/contact"
-                    className="bg-white/5 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl text-sm border border-white/10 transition-all cursor-pointer flex items-center gap-1.5"
+                    className="bg-white/5 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl text-sm border border-white/10 transition-all cursor-pointer flex items-center justify-center gap-1.5 w-full sm:w-auto"
                   >
                     Contact Engineers
                   </Link>
@@ -220,27 +220,10 @@ export default function Home() {
         </section>
 
         {/* Services Summary Block */}
-        <section className="py-20 bg-[#080d17]/40 border-b border-white/5">
+        <section className="py-20 bg-[#0e1629] border-b border-white/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-5">
-                <div className="glass-panel p-6 rounded-2xl border border-white/5">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Factory className="w-5 h-5 text-accent" />
-                    <h4 className="text-white font-bold font-mono text-sm">UTILITY AND CAPTIVE SERVICES</h4>
-                  </div>
-                  <p className="text-xs text-gray-400 leading-relaxed mb-4">
-                    Complete overhauling, parts replacements, rotor alignment checks, bearing repairs and power piping erection from 1 MW up to 1000 MW.
-                  </p>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center justify-center bg-primary hover:bg-primary/95 text-white font-semibold py-2.5 px-4 rounded-xl text-xs transition-colors w-full"
-                  >
-                    View Services Directory
-                  </Link>
-                </div>
-              </div>
-              <div className="lg:col-span-7 space-y-6">
+              <div className="lg:col-span-7 space-y-6 lg:order-2">
                 <span className="text-xs text-secondary font-mono tracking-widest uppercase block">Our Capabilities</span>
                 <h3 className="text-white font-extrabold text-3xl sm:text-4xl">
                   Steam & Gas Turbine Service Lines
@@ -255,6 +238,23 @@ export default function Home() {
                   >
                     <span>Check Out Our Service Sectors</span>
                     <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+              <div className="lg:col-span-5 lg:order-1">
+                <div className="glass-panel p-6 rounded-2xl border border-white/5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Factory className="w-5 h-5 text-accent" />
+                    <h4 className="text-white font-bold font-mono text-sm">UTILITY AND CAPTIVE SERVICES</h4>
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed mb-4">
+                    Complete overhauling, parts replacements, rotor alignment checks, bearing repairs and power piping erection from 1 MW up to 1000 MW.
+                  </p>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center justify-center bg-primary hover:bg-primary/95 text-white font-semibold py-2.5 px-4 rounded-xl text-xs transition-colors w-full"
+                  >
+                    View Services Directory
                   </Link>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function Home() {
         </section>
 
         {/* Projects & Map Summary Block */}
-        <section className="py-20 bg-[#080d17]/40 border-b border-white/5">
+        <section className="py-20 bg-[#0e1629] border-b border-white/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
@@ -320,7 +320,25 @@ export default function Home() {
         <section className="py-20 border-b border-white/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-7 space-y-6 lg:order-2">
+                <span className="text-xs text-secondary font-mono tracking-widest uppercase block">Our Standards</span>
+                <h3 className="text-white font-extrabold text-3xl sm:text-4xl">
+                  Nuclear-Grade Safety Standards
+                </h3>
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+                  Operating in Kudankulam radiation-controlled zones has built a highly disciplined safety mindset. We enforce this strict quality culture on every site we operate.
+                </p>
+                <div>
+                  <Link
+                    href="/why-choose-us"
+                    className="inline-flex items-center gap-1.5 text-secondary hover:text-white font-semibold transition-all duration-200"
+                  >
+                    <span>Read Safety Compliance Documents</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+              <div className="lg:col-span-5 lg:order-1">
                 <div className="glass-panel p-6 rounded-2xl border border-white/5 space-y-4">
                   <div className="flex gap-2.5 items-center text-xs font-mono text-gray-400">
                     <Award className="w-4 h-4 text-accent shrink-0" />
@@ -342,30 +360,12 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-xs text-secondary font-mono tracking-widest uppercase block">Our Standards</span>
-                <h3 className="text-white font-extrabold text-3xl sm:text-4xl">
-                  Nuclear-Grade Safety Standards
-                </h3>
-                <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
-                  Operating in Kudankulam radiation-controlled zones has built a highly disciplined safety mindset. We enforce this strict quality culture on every site we operate.
-                </p>
-                <div>
-                  <Link
-                    href="/why-choose-us"
-                    className="inline-flex items-center gap-1.5 text-secondary hover:text-white font-semibold transition-all duration-200"
-                  >
-                    <span>Read Safety Compliance Documents</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
         </section>
 
         {/* Contact Summary Block */}
-        <section className="py-20 bg-[#080d17]/40">
+        <section className="py-20 bg-[#0e1629]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-2xl mx-auto">
             <span className="text-xs text-secondary font-mono tracking-widest uppercase block mb-1">Get In Touch</span>
             <h3 className="text-white font-extrabold text-3xl mb-4">

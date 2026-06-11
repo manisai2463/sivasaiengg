@@ -61,28 +61,28 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/5 flex flex-col justify-between relative overflow-hidden"
+              className="glass-panel glass-panel-hover p-4 md:p-6 rounded-2xl border border-white/5 flex flex-col justify-between relative overflow-hidden"
             >
               <div>
                 {/* Icon mapping indicator */}
-                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 shadow-md">
+                <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-3 md:mb-5 shadow-md">
                   {idx % 3 === 0 ? (
-                    <Gauge className="w-5 h-5 text-secondary" />
+                    <Gauge className="w-4 h-4 md:w-5 md:h-5 text-secondary" />
                   ) : idx % 3 === 1 ? (
-                    <Factory className="w-5 h-5 text-accent" />
+                    <Factory className="w-4 h-4 md:w-5 md:h-5 text-accent" />
                   ) : (
-                    <Settings className="w-5 h-5 text-primary" />
+                    <Settings className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   )}
                 </div>
 
-                <h3 className="text-white font-bold text-lg mb-3">{service.title}</h3>
-                <p className="text-xs text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+                <h3 className="text-white font-bold text-base md:text-lg mb-1.5 md:mb-3">{service.title}</h3>
+                <p className="text-[11px] md:text-xs text-gray-400 mb-4 md:mb-6 leading-relaxed">{service.description}</p>
               </div>
 
-              <ul className="space-y-2.5 border-t border-white/5 pt-5 text-xs text-gray-500 leading-normal">
+              <ul className="space-y-2 md:space-y-2.5 border-t border-white/5 pt-3.5 md:pt-5 text-[11px] md:text-xs text-gray-500 leading-normal">
                 {service.details.map((detail, dIdx) => (
                   <li key={dIdx} className="flex gap-2 items-start">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 shrink-0" />
+                    <CheckCircle2 className="w-3 h-3 md:w-3.5 md:h-3.5 text-accent mt-0.5 shrink-0" />
                     <span>{detail}</span>
                   </li>
                 ))}
@@ -114,19 +114,19 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="glass-panel p-6 rounded-2xl border border-white/5 flex flex-col justify-between relative overflow-hidden"
+                className="glass-panel p-4 md:p-6 rounded-2xl border border-white/5 flex flex-col justify-between relative overflow-hidden"
               >
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2 md:gap-4">
                   <div className="flex justify-between items-center">
-                    <h3 className="text-white font-bold text-base tracking-wide">{ind.name}</h3>
+                    <h3 className="text-white font-bold text-sm md:text-base tracking-wide">{ind.name}</h3>
                     <Factory className="w-4 h-4 text-accent" />
                   </div>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-[11px] md:text-xs text-gray-400 leading-relaxed">
                     {ind.description}
                   </p>
                 </div>
                 
-                <div className="border-t border-white/5 pt-4 mt-6 flex flex-wrap gap-1.5 items-center">
+                <div className="border-t border-white/5 pt-3 md:pt-4 mt-4 md:mt-6 flex flex-wrap gap-1.5 items-center">
                   <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider mr-1">
                     Clients Served:
                   </span>

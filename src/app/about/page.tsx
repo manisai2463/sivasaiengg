@@ -72,7 +72,7 @@ export default function AboutPage() {
               {BRIEF_ABOUT}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+            <div className="grid grid-cols-2 gap-4 mt-6">
               {CORE_VALUES.map((val) => (
                 <div key={val.title} className="glass-panel p-5 rounded-xl flex flex-col gap-2 border border-white/5">
                   <div className="flex items-center gap-2 text-white font-bold text-sm">
@@ -87,39 +87,40 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Founder Spotlight Card */}
+          {/* Founder and Partner Spotlight Cards */}
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 flex h-full"
+            className="lg:col-span-5 flex h-full flex-col gap-6"
           >
-            <div className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 relative overflow-hidden w-full flex flex-col justify-between">
-              {/* Decorative corner tag */}
-              <div className="absolute top-0 right-0 bg-primary/20 border-b border-l border-white/5 px-3 py-1.5 text-[10px] text-accent font-mono uppercase tracking-wider rounded-bl-xl">
-                Founder Spotlight
-              </div>
-
-              <div className="flex flex-col gap-5">
-                <div className="w-16 h-16 rounded-2xl bg-secondary/15 border border-secondary/30 flex items-center justify-center shadow-lg">
-                  <UserCheck className="w-8 h-8 text-secondary" />
+            {EXPERT_TEAM.slice(0, 2).map((member, index) => (
+              <div key={member.name} className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 relative overflow-hidden w-full flex flex-col justify-between">
+                <div className="absolute top-0 right-0 bg-primary/20 border-b border-l border-white/5 px-3 py-1.5 text-[10px] text-accent font-mono uppercase tracking-wider rounded-bl-xl">
+                  {index === 0 ? 'Founder Spotlight' : 'Partner Spotlight'}
                 </div>
-                <div>
-                  <h3 className="text-white font-bold text-xl">{EXPERT_TEAM[0].name}</h3>
-                  <span className="text-xs text-accent font-mono font-medium block mt-1">{EXPERT_TEAM[0].role}</span>
-                </div>
-                <p className="text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
-                  {EXPERT_TEAM[0].details}
-                </p>
-              </div>
 
-              <div className="flex flex-col gap-1.5 text-[10px] sm:text-xs text-gray-500 font-mono mt-6 pt-4 border-t border-white/5 leading-relaxed">
-                <div>Registered Office: Vijayawada, AP</div>
-                <div>Founding Year: March 2011</div>
-                <div>EPF Est ID: {TAX_REGISTRATIONS.epf}</div>
-                <div>ESI Code: {TAX_REGISTRATIONS.esi}</div>
-                <div className="text-secondary font-semibold mt-1">{TAX_REGISTRATIONS.udyam}</div>
+                <div className="flex flex-col gap-5">
+                  <div className="w-16 h-16 rounded-2xl bg-secondary/15 border border-secondary/30 flex items-center justify-center shadow-lg">
+                    <UserCheck className="w-8 h-8 text-secondary" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-xl">{member.name}</h3>
+                    <span className="text-xs text-accent font-mono font-medium block mt-1">{member.role}</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+                    {member.details}
+                  </p>
+                </div>
               </div>
+            ))}
+
+            <div className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 text-[10px] sm:text-xs text-gray-500 font-mono leading-relaxed">
+              <div>Registered Office: Vijayawada, AP</div>
+              <div>Founding Year: March 2011</div>
+              <div>EPF Est ID: {TAX_REGISTRATIONS.epf}</div>
+              <div>ESI Code: {TAX_REGISTRATIONS.esi}</div>
+              <div className="text-secondary font-semibold mt-1">{TAX_REGISTRATIONS.udyam}</div>
             </div>
           </motion.div>
         </section>
@@ -139,11 +140,11 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {EXPERT_TEAM.slice(1).map((member) => (
-              <div key={member.name} className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/5 flex flex-col justify-between">
+          <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-4 md:pb-0 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-full -mx-4 px-4 md:mx-0 md:px-0">
+            {EXPERT_TEAM.slice(2).map((member) => (
+              <div key={member.name} className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/5 flex flex-col justify-between w-[290px] shrink-0 md:w-auto md:shrink">
                 <div className="flex flex-col gap-3">
-                  <div className="flex justify-between items-start">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
                     <span className={`px-2 py-0.5 rounded text-[9px] font-mono tracking-wider uppercase border ${
                       member.background === 'Siemens'
                         ? 'bg-blue-500/10 border-blue-500/20 text-blue-400'

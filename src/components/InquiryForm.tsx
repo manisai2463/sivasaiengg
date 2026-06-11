@@ -133,7 +133,15 @@ export default function InquiryForm() {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 space-y-5">
+        <form onSubmit={handleSubmit} className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 space-y-6">
+          <div className="border-b border-white/5 pb-4">
+            <h3 className="text-white font-bold text-lg font-mono tracking-wide">
+              Please leave a message
+            </h3>
+            <p className="text-xs text-gray-400 mt-1">
+              Submit your technical requirements or queries below and we will get back to you shortly.
+            </p>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Name */}
             <div className="flex flex-col gap-1.5">

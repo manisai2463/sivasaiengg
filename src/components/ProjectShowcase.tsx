@@ -26,16 +26,15 @@ export default function ProjectShowcase() {
 
   return (
     <div className="space-y-8">
-      {/* Filters and Search Bar */}
       <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-[#0e1424]/40 border border-white/5 p-4 rounded-2xl backdrop-blur-sm">
         {/* Categories Grid */}
-        <div className="flex flex-wrap gap-2 w-full md:w-auto">
+        <div className="flex overflow-x-auto md:flex-wrap gap-2 w-full md:w-auto pb-2 md:pb-0 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {(['All', 'Nuclear & Utility', 'CPP & Heavy Industry', 'Cogeneration & Process'] as CategoryFilter[]).map(
             (category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide border transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide border transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedCategory === category
                     ? 'bg-primary border-secondary/35 text-white shadow-lg'
                     : 'bg-white/5 border-white/5 text-gray-400 hover:text-white hover:bg-white/10'
@@ -76,36 +75,36 @@ export default function ProjectShowcase() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4 }}
-              className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden"
+              className="glass-panel glass-panel-hover p-4 md:p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden"
             >
               {/* Badge for nuclear/large-scale */}
-              <div className="absolute top-0 right-0 bg-primary/10 border-b border-l border-white/5 rounded-bl-xl px-3 py-1 flex items-center gap-1">
+              <div className="absolute top-0 right-0 bg-primary/10 border-b border-l border-white/5 rounded-bl-xl px-2 py-0.5 md:px-3 md:py-1 flex items-center gap-1">
                 {project.category === 'Nuclear & Utility' ? (
-                  <Shield className="w-3 h-3 text-accent" />
+                  <Shield className="w-2.5 h-2.5 md:w-3 md:h-3 text-accent" />
                 ) : (
-                  <Zap className="w-3 h-3 text-secondary" />
+                  <Zap className="w-2.5 h-2.5 md:w-3 md:h-3 text-secondary" />
                 )}
-                <span className="text-[10px] text-gray-300 font-mono uppercase tracking-wider">{project.capacity}</span>
+                <span className="text-[9px] md:text-[10px] text-gray-300 font-mono uppercase tracking-wider">{project.capacity}</span>
               </div>
 
               <div>
-                <h4 className="text-white font-bold text-lg mb-2 leading-snug group-hover:text-secondary pr-16 pt-2">
+                <h4 className="text-white font-bold text-base md:text-lg mb-1.5 md:mb-2 leading-snug group-hover:text-secondary pr-16 pt-3 md:pt-2">
                   {project.title}
                 </h4>
-                <p className="text-xs text-gray-400 mb-5 leading-relaxed">
+                <p className="text-[11px] md:text-xs text-gray-400 mb-3 md:mb-5 leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
-              <div className="space-y-3 pt-4 border-t border-white/5">
+              <div className="space-y-2 md:space-y-3 pt-3 md:pt-4 border-t border-white/5">
                 {/* Client detail */}
-                <div className="flex gap-2 items-center text-xs">
+                <div className="flex gap-2 items-center text-[11px] md:text-xs">
                   <Briefcase className="w-3.5 h-3.5 text-secondary shrink-0" />
                   <span className="text-gray-300 font-medium truncate">{project.clientName}</span>
                 </div>
 
                 {/* Location detail */}
-                <div className="flex gap-2 items-center text-xs">
+                <div className="flex gap-2 items-center text-[11px] md:text-xs">
                   <MapPin className="w-3.5 h-3.5 text-accent shrink-0" />
                   <span className="text-gray-400 truncate">{project.location}</span>
                 </div>
@@ -114,6 +113,7 @@ export default function ProjectShowcase() {
           ))}
         </AnimatePresence>
       </motion.div>
+
     </div>
   );
 }

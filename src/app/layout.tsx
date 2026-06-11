@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Siva Sai Engineering Services | Turbine & Generator Erection & Overhauling",
   description: "Siva Sai Engineering Services (SSES) specializes in the erection, overhauling, alignment, and commissioning of steam turbines, gas turbines, generators, and auxiliary equipment ranging from 1 MW to 1000 MW.",
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +34,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/logo.jpg" />
+        <link rel="shortcut icon" href="/logo.jpg" />
+        <link rel="apple-touch-icon" href="/logo.jpg" />
+      </head>
       <body className="min-h-full flex flex-col bg-[#0B0F19]">
         <a href="#main-content" className="skip-link sr-only">
           Skip to content

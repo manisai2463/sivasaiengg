@@ -53,16 +53,16 @@ export default function IndiaMap() {
   const selectedState = MAP_STATES_DATA[selectedStateKey];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-center">
       {/* Map Column */}
       <div className="lg:col-span-7 flex flex-col items-center relative">
-        <div className="text-center mb-6">
+        <div className="text-center mb-4 md:mb-6">
           <p className="text-xs text-secondary font-mono tracking-widest uppercase mb-1">Interactive Project Map</p>
-          <h3 className="text-white font-bold text-xl md:text-2xl">Geographic Footprint across India</h3>
+          <h3 className="text-white font-bold text-lg md:text-2xl">Geographic Footprint across India</h3>
         </div>
 
         {/* Styled Container for Map */}
-        <div className="w-full max-w-[550px] rounded-3xl border border-white/5 bg-[#0e1424]/40 p-4 md:p-6 overflow-hidden shadow-2xl backdrop-blur-sm">
+        <div className="w-full max-w-[260px] md:max-w-[550px] rounded-3xl border border-white/5 bg-[#0e1424]/40 p-3 md:p-6 overflow-hidden shadow-2xl backdrop-blur-sm">
           {/* Relative wrapper with no padding for SVG and Pins */}
           <div className="relative w-full">
             {/* Futuristic grid mesh background */}
@@ -115,12 +115,12 @@ export default function IndiaMap() {
                 <div
                   key={pin.id}
                   style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group"
+                  className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group p-3 flex items-center justify-center"
                   onClick={() => setSelectedStateKey(pin.stateKey)}
                 >
                   {/* Outer pulsing ring */}
                   <div
-                    className={`absolute -inset-2.5 rounded-full transition-all duration-300 ${
+                    className={`absolute inset-1 rounded-full transition-all duration-300 ${
                       isSelected
                         ? 'bg-secondary/35 animate-ping'
                         : 'bg-primary/20 group-hover:bg-primary/45 group-hover:animate-ping'
@@ -129,7 +129,7 @@ export default function IndiaMap() {
                   
                   {/* Core dot */}
                   <div
-                    className={`w-3.5 h-3.5 rounded-full border border-white/20 transition-all duration-300 shadow-[0_0_10px_rgba(255,255,255,0.4)] ${
+                    className={`w-3.5 h-3.5 rounded-full border border-white/20 transition-all duration-300 shadow-[0_0_10px_rgba(255,255,255,0.4)] relative z-10 ${
                       isSelected ? 'bg-accent' : 'bg-primary group-hover:bg-secondary'
                     }`}
                   />
@@ -145,7 +145,7 @@ export default function IndiaMap() {
         </div>
 
         {/* Map Helper note */}
-        <div className="flex items-center gap-2 mt-4 text-xs text-gray-500 font-mono">
+        <div className="flex items-center gap-2 mt-2 md:mt-4 text-[10px] md:text-xs text-gray-500 font-mono">
           <Info className="w-3.5 h-3.5 text-secondary animate-pulse" />
           <span>Click highlighted states on the map to filter projects</span>
         </div>
@@ -154,12 +154,12 @@ export default function IndiaMap() {
       {/* Details Column */}
       <div className="lg:col-span-5 flex flex-col h-full justify-center">
         {/* State Selection Tabs */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex overflow-x-auto md:flex-wrap gap-2 mb-4 md:mb-6 pb-2 md:pb-0 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-full">
           {Object.keys(MAP_STATES_DATA).map((stateKey) => (
             <button
               key={stateKey}
               onClick={() => setSelectedStateKey(stateKey)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium border transition-all duration-200 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium border transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 ${
                 selectedStateKey === stateKey
                   ? 'bg-secondary/10 border-secondary text-secondary shadow-[0_0_10px_rgba(0,180,216,0.1)]'
                   : 'bg-white/5 border-white/5 text-gray-400 hover:text-white hover:bg-white/10'
@@ -179,38 +179,38 @@ export default function IndiaMap() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
-              className="glass-panel p-6 md:p-8 rounded-3xl border border-white/10 relative overflow-hidden"
+              className="glass-panel p-4 md:p-8 rounded-3xl border border-white/10 relative overflow-hidden"
             >
               {/* Decorative side accent bar */}
               <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-primary to-secondary" />
 
-              <div className="flex justify-between items-start mb-6">
+              <div className="flex justify-between items-start mb-4 md:mb-6">
                 <div>
-                  <span className="text-xs text-secondary font-mono tracking-widest uppercase">Project Hub</span>
-                  <h4 className="text-white font-bold text-2xl mt-1">{selectedState.stateName}</h4>
+                  <span className="text-[10px] text-secondary font-mono tracking-widest uppercase">Project Hub</span>
+                  <h4 className="text-white font-bold text-lg md:text-2xl mt-0.5">{selectedState.stateName}</h4>
                 </div>
-                <div className="bg-primary/20 border border-primary/30 rounded-2xl px-4 py-2 text-center shadow-lg">
-                  <span className="block text-[10px] text-gray-400 uppercase font-mono tracking-wider">Completed</span>
-                  <span className="text-xl font-extrabold text-accent font-mono">{selectedState.projectsCount}+ Projects</span>
+                <div className="bg-primary/20 border border-primary/30 rounded-xl px-3 py-1.5 text-center shadow-lg">
+                  <span className="block text-[9px] text-gray-400 uppercase font-mono tracking-wider">Completed</span>
+                  <span className="text-base font-extrabold text-accent font-mono">{selectedState.projectsCount}+ Projects</span>
                 </div>
               </div>
 
-              <div className="mb-6">
-                <h5 className="text-gray-300 font-semibold text-sm mb-3 flex items-center gap-2">
-                  <Factory className="w-4 h-4 text-secondary" />
+              <div className="mb-4 md:mb-6">
+                <h5 className="text-gray-300 font-semibold text-xs md:text-sm mb-2 md:mb-3 flex items-center gap-2">
+                  <Factory className="w-3.5 h-3.5 text-secondary" />
                   Key Turbine Installations & Overhauls
                 </h5>
-                <ul className="space-y-3">
+                <ul className="space-y-1.5 md:space-y-3">
                   {selectedState.keyProjects.map((project, idx) => (
-                    <li key={idx} className="flex gap-2.5 items-start text-sm text-gray-400 leading-normal">
-                      <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                    <li key={idx} className="flex gap-2.5 items-start text-xs md:text-sm text-gray-400 leading-normal">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 shrink-0" />
                       <span>{project}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="bg-[#0e1424]/60 border border-white/5 p-4 rounded-xl flex items-center gap-3 text-xs text-gray-500 leading-relaxed font-mono">
+              <div className="hidden lg:flex bg-[#0e1424]/60 border border-white/5 p-4 rounded-xl items-center gap-3 text-xs text-gray-500 leading-relaxed font-mono">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
                 <span>Pan-India turbine mobilizing capability, bringing ex-BHEL & ex-Siemens tools and expert technicians directly to site.</span>
               </div>
