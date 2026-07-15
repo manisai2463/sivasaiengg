@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,21 +34,24 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <link rel="icon" href="/logo.jpg" />
         <link rel="shortcut icon" href="/logo.jpg" />
         <link rel="apple-touch-icon" href="/logo.jpg" />
       </head>
-      <body className="min-h-full flex flex-col bg-[#0B0F19]">
-        <a href="#main-content" className="skip-link sr-only">
-          Skip to content
-        </a>
-        <Navbar />
-        <div id="main-content" className="flex-1">
-          {children}
-        </div>
-        <Footer />
+      <body className="min-h-full flex flex-col bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-[#f8fafc] transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <a href="#main-content" className="skip-link sr-only">
+            Skip to content
+          </a>
+          <Navbar />
+          <div id="main-content" className="flex-1">
+            {children}
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

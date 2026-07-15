@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-primary: #0057B8;
@@ -29,12 +30,9 @@
 /* Custom styles and scrollbars */
 html {
   scroll-behavior: smooth;
-  background-color: #0B0F19;
 }
 
 body {
-  color: #f8fafc;
-  background-color: #0B0F19;
   overflow-x: hidden;
 }
 
@@ -45,12 +43,19 @@ body {
 }
 
 ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
   background: #0B0F19;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 5px;
+  border: 2px solid #f1f5f9;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
   border: 2px solid #0B0F19;
 }
 
@@ -60,10 +65,17 @@ body {
 
 /* Glassmorphism card utilities */
 .glass-panel {
-  background: rgba(13, 19, 33, 0.75);
+  background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .glass-panel {
+  background: rgba(13, 19, 33, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
 }
 
 .glass-panel-hover {
@@ -72,10 +84,15 @@ body {
 }
 
 .glass-panel-hover:hover {
-  background: rgba(17, 25, 45, 0.85);
+  background: rgba(255, 255, 255, 0.65);
   border-color: rgba(0, 180, 216, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.1);
   transform: translateY(-3px);
+}
+
+.dark .glass-panel-hover:hover {
+  background: rgba(17, 25, 45, 0.85);
+  box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.2);
 }
 
 /* Text glow effects */
@@ -151,4 +168,13 @@ body {
   margin: 0;
   clip: auto;
   white-space: nowrap;
+}
+
+/* Map Dark Mode Filter */
+.map-dark-filter {
+  filter: none;
+}
+
+.dark .map-dark-filter {
+  filter: invert(90%) hue-rotate(180deg) grayscale(30%) contrast(90%);
 }

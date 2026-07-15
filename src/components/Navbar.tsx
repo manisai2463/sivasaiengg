@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, PhoneCall } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavLink {
   label: string;
@@ -96,45 +97,37 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0B0F19] border-b border-white/5 py-3 shadow-lg'
-          : 'bg-[#0B0F19]/95 border-b border-white/5 py-5 shadow-lg'
+          ? 'bg-white/95 dark:bg-[#0B0F19]/95 border-b border-gray-200 dark:border-white/5 py-3 shadow-lg backdrop-blur-md'
+          : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 bg-white rounded-lg p-0.5 overflow-hidden transition-transform duration-300 group-hover:scale-105 border border-white/20">
+          <Link href="/" className="flex items-center group relative z-50">
+            <div className="relative w-24 h-24 md:w-32 md:h-32 -mt-4 -mb-4 md:-mt-6 md:-mb-6 transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/logo.jpg"
+                src="/logo_transparent.png"
                 alt="Siva Sai Engineering Services Logo"
                 fill
-                className="object-contain"
+                className="object-contain drop-shadow-lg"
                 priority
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white font-bold tracking-wider text-sm sm:text-base group-hover:text-secondary transition-colors">
-                SIVA SAI
-              </span>
-              <span className="text-[10px] sm:text-xs text-gray-400 font-mono tracking-widest leading-none">
-                ENGINEERING SERVICES
-              </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`relative py-2 text-sm font-medium tracking-wide transition-colors ${
+                  className={`relative py-2 text-base font-semibold tracking-wide transition-colors ${
                     active
-                      ? 'text-secondary font-semibold'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-secondary'
+                      : 'text-black dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
                   }`}
                 >
                   {link.label}
@@ -148,6 +141,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggle />
             <Link
               href="/contact"
               className="flex items-center gap-2 bg-primary hover:bg-primary/95 text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-all duration-300 border border-secondary/20 shadow-[0_0_15px_rgba(0,87,184,0.3)] hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] shimmer-btn"
@@ -158,10 +152,11 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg border border-white/10 bg-[#111827]/50"
+              className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none p-2 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-[#111827]/50 transition-colors"
               aria-label="Toggle Menu"
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -178,7 +173,7 @@ export default function Navbar() {
         ref={overlayRef}
         role="dialog"
         aria-modal="true"
-        className={`md:hidden fixed inset-0 z-40 bg-[#0B0F19] border-t border-white/5 transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 z-40 bg-white dark:bg-[#0B0F19] border-t border-gray-200 dark:border-white/5 transition-all duration-300 ${
           isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}
       >
@@ -190,10 +185,10 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`text-lg font-medium py-2 border-b border-white/5 ${
+                className={`text-lg font-medium py-2 border-b border-gray-100 dark:border-white/5 ${
                   active
                     ? 'text-secondary font-bold pl-2 border-l-2 border-l-secondary'
-                    : 'text-gray-300'
+                    : 'text-black dark:text-gray-300'
                 }`}
               >
                 {link.label}

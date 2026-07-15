@@ -61,6 +61,7 @@ export default function TurbineCanvas() {
     // Render loop
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isDark = document.documentElement.classList.contains('dark');
 
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
@@ -86,8 +87,8 @@ export default function TurbineCanvas() {
       ctx.fill();
 
       // Draw Bearing Pedestals (Left & Right support)
-      ctx.fillStyle = '#334155';
-      ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+      ctx.fillStyle = isDark ? '#334155' : '#cbd5e1';
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.1)';
       ctx.lineWidth = 1;
       // Left Pedestal
       ctx.beginPath();
@@ -129,7 +130,7 @@ export default function TurbineCanvas() {
           ctx.stroke();
 
           // Blade tip shroud
-          ctx.fillStyle = '#f8fafc';
+          ctx.fillStyle = isDark ? '#f8fafc' : '#cbd5e1';
           ctx.beginPath();
           ctx.arc(targetX, targetY, Math.max(1.5, 2.5 * widthFactor), 0, Math.PI * 2);
           ctx.fill();
@@ -185,7 +186,7 @@ export default function TurbineCanvas() {
       }
 
       // Draw casing boundaries (glowing glass-like container)
-      ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.1)';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.roundRect(cx - shaftLength / 2.1, cy - 85 * heightFactor, shaftLength * 0.9, 170 * heightFactor, 12);
@@ -203,12 +204,12 @@ export default function TurbineCanvas() {
   }, [rpm, pressure, isRunning]);
 
   return (
-    <div className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+    <div className="glass-panel p-6 md:p-8 rounded-3xl border border-gray-200 dark:border-white/5 relative overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         {/* Canvas Display */}
         <div className="lg:col-span-8 flex flex-col items-center">
           <div className="flex justify-between items-center w-full mb-4 px-2">
-            <span className="text-xs text-gray-500 font-mono">Rotational Flow Simulation</span>
+            <span className="text-xs text-black font-mono">Rotational Flow Simulation</span>
             <button
               onClick={() => setIsRunning(!isRunning)}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all duration-200 ${
@@ -229,34 +230,34 @@ export default function TurbineCanvas() {
             </button>
           </div>
 
-          <div className="w-full bg-[#070b13] rounded-2xl border border-white/5 overflow-hidden">
+          <div className="w-full bg-slate-100 dark:bg-[#070b13] rounded-2xl border border-gray-200 dark:border-white/5 overflow-hidden">
             <canvas ref={canvasRef} className="block w-full" />
           </div>
 
           {/* Mobile Telemetry Grid (Shown above sliders on mobile to prevent scrolling) */}
           <div className="grid grid-cols-3 gap-3 w-full mt-4 px-2 lg:hidden">
             {/* MW output */}
-            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
-              <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Est. Power</span>
+            <div className="bg-gray-100 dark:bg-[#0e1424]/60 border border-gray-200 dark:border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
+              <span className="text-[9px] text-black dark:text-gray-500 font-mono uppercase tracking-wider">Est. Power</span>
               <span className="text-base font-extrabold text-accent font-mono">{mw}</span>
-              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">MW</span>
+              <span className="text-xs text-black dark:text-gray-400 font-mono uppercase tracking-wider">MW</span>
             </div>
 
             {/* Grid frequency */}
-            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
-              <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Frequency</span>
+            <div className="bg-gray-100 dark:bg-[#0e1424]/60 border border-gray-200 dark:border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
+              <span className="text-[9px] text-black dark:text-gray-500 font-mono uppercase tracking-wider">Frequency</span>
               <span className="text-base font-extrabold text-secondary font-mono">{hz}</span>
-              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">Hz</span>
+              <span className="text-xs text-black dark:text-gray-400 font-mono uppercase tracking-wider">Hz</span>
             </div>
 
             {/* Vibration */}
-            <div className="bg-[#0e1424]/60 border border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
+            <div className="bg-gray-100 dark:bg-[#0e1424]/60 border border-gray-200 dark:border-white/10 p-3 rounded-xl flex flex-col gap-1 relative overflow-hidden">
               <div className="flex justify-between items-center w-full">
-                <span className="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Vib.</span>
+                <span className="text-[9px] text-black dark:text-gray-500 font-mono uppercase tracking-wider">Vib.</span>
                 <span className={`w-1.5 h-1.5 rounded-full ${vibration > 1.8 ? 'bg-red-400 animate-ping' : 'bg-green-400'}`} />
               </div>
-              <span className="text-base font-extrabold text-white font-mono">{vibration}</span>
-              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">mm/s</span>
+              <span className="text-base font-extrabold text-gray-900 dark:text-white font-mono">{vibration}</span>
+              <span className="text-xs text-black dark:text-gray-400 font-mono uppercase tracking-wider">mm/s</span>
             </div>
           </div>
 
@@ -265,11 +266,11 @@ export default function TurbineCanvas() {
             {/* RPM Slider */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between text-xs font-mono">
-                <span className="text-gray-400 flex items-center gap-1">
+                <span className="text-black dark:text-gray-400 flex items-center gap-1">
                   <Gauge className="w-3.5 h-3.5 text-secondary" />
                   Rotor Speed (RPM)
                 </span>
-                <span className="text-white font-bold">{rpm} RPM</span>
+                <span className="text-gray-900 dark:text-white font-bold">{rpm} RPM</span>
               </div>
               <input
                 type="range"
@@ -279,18 +280,18 @@ export default function TurbineCanvas() {
                 value={rpm}
                 disabled={!isRunning}
                 onChange={(e) => setRpm(Number(e.target.value))}
-                className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-secondary disabled:opacity-40"
+                className="w-full h-1.5 bg-gray-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-secondary disabled:opacity-40"
               />
             </div>
 
             {/* Pressure Slider */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between text-xs font-mono">
-                <span className="text-gray-400 flex items-center gap-1">
+                <span className="text-black dark:text-gray-400 flex items-center gap-1">
                   <Flame className="w-3.5 h-3.5 text-accent" />
                   Steam Pressure (kg/cm²)
                 </span>
-                <span className="text-white font-bold">{pressure} kg/cm²</span>
+                <span className="text-gray-900 dark:text-white font-bold">{pressure} kg/cm²</span>
               </div>
               <input
                 type="range"
@@ -300,54 +301,54 @@ export default function TurbineCanvas() {
                 value={pressure}
                 disabled={!isRunning}
                 onChange={(e) => setPressure(Number(e.target.value))}
-                className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-accent disabled:opacity-40"
+                className="w-full h-1.5 bg-gray-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-accent disabled:opacity-40"
               />
             </div>
           </div>
         </div>
 
         {/* Info & Stats Column */}
-        <div className="lg:col-span-4 flex flex-col gap-5 h-full justify-between mt-6 lg:mt-0 pt-6 lg:pt-0 border-t lg:border-t-0 lg:border-l border-white/5 lg:pl-8">
+        <div className="lg:col-span-4 flex flex-col gap-5 h-full justify-between mt-6 lg:mt-0 pt-6 lg:pt-0 border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-white/5 lg:pl-8">
           <div className="flex flex-col gap-2">
             <span className="text-xs text-secondary font-mono tracking-widest uppercase">Turbine Telemetry</span>
-            <h4 className="text-white font-bold text-2xl">Power Output Simulator</h4>
-            <p className="text-sm text-gray-500 leading-relaxed mt-1">
+            <h4 className="text-gray-900 dark:text-white font-bold text-2xl">Power Output Simulator</h4>
+            <p className="text-sm text-black dark:text-gray-500 leading-relaxed mt-1">
               Adjust the RPM speed and inlet steam pressure sliders to simulate generation capacity scaling from 1.5 MW industrial units to nuclear steam turbine configurations.
             </p>
           </div>
 
           <div className="hidden lg:grid grid-cols-2 gap-4 mt-2">
             {/* MW output */}
-            <div className="bg-[#0e1424]/40 border border-white/5 p-4 rounded-2xl flex flex-col gap-1 relative overflow-hidden">
+            <div className="bg-gray-50 dark:bg-[#0e1424]/40 border border-gray-200 dark:border-white/5 p-4 rounded-2xl flex flex-col gap-1 relative overflow-hidden">
               <Zap className="w-10 h-10 text-accent/10 absolute right-1.5 bottom-1.5 pointer-events-none" />
-              <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Estimated Power</span>
+              <span className="text-[10px] text-black dark:text-gray-500 font-mono uppercase tracking-wider">Estimated Power</span>
               <span className="text-3xl font-black text-accent font-mono">{mw}</span>
-              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">MW</span>
+              <span className="text-xs text-black dark:text-gray-400 font-mono uppercase tracking-wider">MW</span>
             </div>
 
             {/* Grid frequency */}
-            <div className="bg-[#0e1424]/40 border border-white/5 p-4 rounded-2xl flex flex-col gap-1 relative overflow-hidden">
+            <div className="bg-gray-50 dark:bg-[#0e1424]/40 border border-gray-200 dark:border-white/5 p-4 rounded-2xl flex flex-col gap-1 relative overflow-hidden">
               <Activity className="w-10 h-10 text-secondary/10 absolute right-1.5 bottom-1.5 pointer-events-none" />
-              <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Frequency</span>
+              <span className="text-[10px] text-black dark:text-gray-500 font-mono uppercase tracking-wider">Frequency</span>
               <span className="text-3xl font-black text-secondary font-mono">{hz}</span>
-              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">Hz</span>
+              <span className="text-xs text-black dark:text-gray-400 font-mono uppercase tracking-wider">Hz</span>
             </div>
 
             {/* Vibration */}
-            <div className="bg-[#0e1424]/40 border border-white/5 p-4 rounded-2xl flex flex-col gap-1 col-span-2">
+            <div className="bg-gray-50 dark:bg-[#0e1424]/40 border border-gray-200 dark:border-white/5 p-4 rounded-2xl flex flex-col gap-1 col-span-2">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">Casing Vibration</span>
-                <span className={`text-xs font-mono font-bold ${vibration > 1.8 ? 'text-red-400 animate-pulse' : 'text-green-400'}`}>
+                <span className="text-[10px] text-black dark:text-gray-500 font-mono uppercase tracking-wider">Casing Vibration</span>
+                <span className={`text-xs font-mono font-bold ${vibration > 1.8 ? 'text-red-400 animate-pulse' : 'text-green-500 dark:text-green-400'}`}>
                   {vibration > 1.8 ? 'WARNING: HIGH' : 'NORMAL'}
                 </span>
               </div>
-              <span className="text-xl font-bold text-white font-mono mt-1">{vibration}</span>
-              <span className="text-xs text-gray-400 font-mono uppercase tracking-wider">mm/s</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white font-mono mt-1">{vibration}</span>
+              <span className="text-xs text-black dark:text-gray-400 font-mono uppercase tracking-wider">mm/s</span>
               {/* Micro graph visualizer */}
-              <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden mt-2">
+              <div className="w-full bg-gray-200 dark:bg-slate-800 h-1 rounded-full overflow-hidden mt-2">
                 <div
                   style={{ width: `${Math.min(100, (vibration / 3) * 100)}%` }}
-                  className={`h-full transition-all duration-300 ${vibration > 1.8 ? 'bg-red-400' : 'bg-green-400'}`}
+                  className={`h-full transition-all duration-300 ${vibration > 1.8 ? 'bg-red-500' : 'bg-green-500'}`}
                 />
               </div>
             </div>

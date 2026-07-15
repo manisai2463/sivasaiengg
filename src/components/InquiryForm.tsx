@@ -120,8 +120,8 @@ export default function InquiryForm() {
           <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-2 shadow-[0_0_20px_rgba(34,197,94,0.2)]">
             <CheckCircle className="w-8 h-8 text-green-400" />
           </div>
-          <h3 className="text-white font-bold text-2xl">Inquiry Submitted Successfully</h3>
-          <p className="text-sm text-gray-400 max-w-sm leading-relaxed">
+          <h3 className="text-gray-900 dark:text-white font-bold text-2xl">Inquiry Submitted Successfully</h3>
+          <p className="text-sm text-black dark:text-gray-400 max-w-sm leading-relaxed">
             Thank you for contacting Siva Sai Engineering Services. Our turbine division manager will review your technical request and reply within 24 hours.
           </p>
           <button
@@ -133,19 +133,19 @@ export default function InquiryForm() {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="glass-panel p-6 md:p-8 rounded-3xl border border-white/5 space-y-6">
-          <div className="border-b border-white/5 pb-4">
-            <h3 className="text-white font-bold text-lg font-mono tracking-wide">
+        <form onSubmit={handleSubmit} className="glass-panel p-6 md:p-8 rounded-3xl border border-gray-200 dark:border-white/5 space-y-6">
+          <div className="border-b border-gray-200 dark:border-white/5 pb-4">
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg font-mono tracking-wide">
               Please leave a message
             </h3>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-black dark:text-gray-400 mt-1">
               Submit your technical requirements or queries below and we will get back to you shortly.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Name */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="text-xs font-semibold text-gray-400 font-mono">
+              <label htmlFor="name" className="text-xs font-semibold text-black dark:text-gray-400 font-mono">
                 Full Name <span className="text-accent">*</span>
               </label>
               <input
@@ -156,13 +156,13 @@ export default function InquiryForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="e.g. Ramesh Kumar"
-                className="bg-[#070b13] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-600"
+                className="bg-white dark:bg-[#070b13] border border-gray-300 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-400 dark:placeholder-gray-600"
               />
             </div>
 
             {/* Email */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-xs font-semibold text-gray-400 font-mono">
+              <label htmlFor="email" className="text-xs font-semibold text-black dark:text-gray-400 font-mono">
                 Email Address <span className="text-accent">*</span>
               </label>
               <input
@@ -173,13 +173,13 @@ export default function InquiryForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="client@powerplant.com"
-                className="bg-[#070b13] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-600"
+                className="bg-white dark:bg-[#070b13] border border-gray-300 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-400 dark:placeholder-gray-600"
               />
             </div>
 
             {/* Phone */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="phone" className="text-xs font-semibold text-gray-400 font-mono">
+              <label htmlFor="phone" className="text-xs font-semibold text-black dark:text-gray-400 font-mono">
                 Phone Number <span className="text-accent">*</span>
               </label>
               <input
@@ -190,13 +190,13 @@ export default function InquiryForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="+91 98765 43210"
-                className="bg-[#070b13] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-600"
+                className="bg-white dark:bg-[#070b13] border border-gray-300 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-400 dark:placeholder-gray-600"
               />
             </div>
 
             {/* Company Name */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="company" className="text-xs font-semibold text-gray-400 font-mono">
+              <label htmlFor="company" className="text-xs font-semibold text-black dark:text-gray-400 font-mono">
                 Company Name
               </label>
               <input
@@ -206,13 +206,13 @@ export default function InquiryForm() {
                 value={formData.company}
                 onChange={handleChange}
                 placeholder="Power Gen Corp"
-                className="bg-[#070b13] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-600"
+                className="bg-white dark:bg-[#070b13] border border-gray-300 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-secondary transition-all placeholder-gray-400 dark:placeholder-gray-600"
               />
             </div>
 
             {/* Capacity Dropdown */}
             <div className="flex flex-col gap-1.5 sm:col-span-2">
-              <label htmlFor="capacity" className="text-xs font-semibold text-gray-400 font-mono">
+              <label htmlFor="capacity" className="text-xs font-semibold text-black dark:text-gray-400 font-mono">
                 Turbine / Generator Capacity
               </label>
               <select
@@ -220,7 +220,7 @@ export default function InquiryForm() {
                 name="capacity"
                 value={formData.capacity}
                 onChange={handleChange}
-                className="bg-[#070b13] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-secondary transition-all appearance-none cursor-pointer"
+                className="bg-white dark:bg-[#070b13] border border-gray-300 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-secondary transition-all appearance-none cursor-pointer"
               >
                 <option value="1-10 MW">Small Industrial (1 MW to 10 MW)</option>
                 <option value="10-100 MW">Medium Captive (10 MW to 100 MW)</option>
@@ -231,7 +231,7 @@ export default function InquiryForm() {
 
             {/* Message */}
             <div className="flex flex-col gap-1.5 sm:col-span-2">
-              <label htmlFor="message" className="text-xs font-semibold text-gray-400 font-mono">
+              <label htmlFor="message" className="text-xs font-semibold text-black dark:text-gray-400 font-mono">
                 Technical Requirements / Scope of Work <span className="text-accent">*</span>
               </label>
               <textarea
@@ -242,14 +242,14 @@ export default function InquiryForm() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Please describe the overhaul, rotor balancing, casing bellows, or alignment requirements..."
-                className="bg-[#070b13] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-secondary transition-all resize-none placeholder-gray-600"
+                className="bg-white dark:bg-[#070b13] border border-gray-300 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-secondary transition-all resize-none placeholder-gray-400 dark:placeholder-gray-600"
               />
             </div>
           </div>
 
           {/* Errors display */}
           {submitStatus === 'error' && (
-            <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3 flex items-center gap-2 text-xs text-red-400">
+            <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3 flex items-center gap-2 text-xs text-red-600 dark:text-red-400">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMessage}</span>
             </div>
