@@ -42,7 +42,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/s_favicon.png" />
       </head>
       <body className="min-h-full flex flex-col bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-[#f8fafc] transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <a href="#main-content" className="skip-link sr-only">
             Skip to content
           </a>

@@ -207,7 +207,7 @@ export default function Home() {
             style={{ backgroundImage: 'url("/client_bg.png")' }}
           />
           <div className="flex flex-col gap-4 relative z-10">
-            <span className="text-[10px] text-black font-mono tracking-widest uppercase text-center block mb-2">
+            <span className="text-[10px] text-gray-500 dark:text-gray-400 font-mono tracking-widest uppercase text-center block mb-2">
               Trusted by Leading Corporate Entities & Outage Managers
             </span>
             <ClientLogos />
