@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   title: "Siva Sai Engineering Services | Turbine & Generator Erection & Overhauling",
   description: "Siva Sai Engineering Services (SSES) specializes in the erection, overhauling, alignment, and commissioning of steam turbines, gas turbines, generators, and auxiliary equipment ranging from 1 MW to 1000 MW.",
   icons: {
-    icon: "/logo.jpg",
-    shortcut: "/logo.jpg",
-    apple: "/logo.jpg",
+    icon: "/s_favicon.png",
+    shortcut: "/s_favicon.png",
+    apple: "/s_favicon.png",
   },
 };
 
@@ -37,9 +37,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/logo.jpg" />
-        <link rel="shortcut icon" href="/logo.jpg" />
-        <link rel="apple-touch-icon" href="/logo.jpg" />
+        <link rel="icon" href="/s_favicon.png" />
+        <link rel="shortcut icon" href="/s_favicon.png" />
+        <link rel="apple-touch-icon" href="/s_favicon.png" />
       </head>
       <body className="min-h-full flex flex-col bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-[#f8fafc] transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
