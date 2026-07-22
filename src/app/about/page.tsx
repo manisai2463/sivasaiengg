@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Shield, UserCheck, CheckCircle2, Users, BookOpen } from 'lucide-react';
 import Timeline from '@/components/Timeline';
@@ -14,10 +15,15 @@ export default function AboutPage() {
       <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.008)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.008)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       {/* Page-specific background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.85] dark:opacity-[0.12] pointer-events-none"
-        style={{ backgroundImage: 'url("/about_us_bg.png")' }}
-      />
+      <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.12] pointer-events-none">
+        <Image
+          src="/about_us_bg.png"
+          alt="About Us Background"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

@@ -173,6 +173,7 @@ export default function Navbar() {
         ref={overlayRef}
         role="dialog"
         aria-modal="true"
+        aria-label="Mobile Navigation Menu"
         className={`md:hidden fixed inset-0 z-40 bg-white dark:bg-[#0B0F19] border-t border-gray-200 dark:border-white/5 transition-all duration-300 ${
           isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}

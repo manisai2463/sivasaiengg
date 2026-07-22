@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   ChevronRight,
@@ -43,10 +44,15 @@ export default function Home() {
         {/* 2. Hero Section */}
         <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 md:py-24 border-b border-gray-200 dark:border-white/5">
           {/* Turbine background photo with dark overlay */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.85] dark:opacity-[0.18] pointer-events-none"
-            style={{ backgroundImage: 'url("/turbine_hero_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.18] pointer-events-none">
+            <Image
+              src="/turbine_hero_bg.png"
+              alt="Background Turbine"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
           {/* Futuristic grid mesh background */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none" />
           
@@ -137,7 +143,7 @@ export default function Home() {
                   </Link>
                   <Link
                     href="/contact"
-                    className="bg-white hover:bg-gray-50 dark:bg-white/5 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold px-6 py-3 rounded-xl text-sm border border-gray-200 dark:border-white/10 transition-all cursor-pointer flex items-center justify-center gap-1.5 w-full sm:w-auto shadow-sm dark:shadow-none"
+                    className="bg-slate-200 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-gray-900 dark:text-white font-semibold px-6 py-3 rounded-xl text-sm border border-gray-300 dark:border-white/10 transition-all cursor-pointer flex items-center justify-center gap-1.5 w-full sm:w-auto shadow-sm dark:shadow-none"
                   >
                     Contact Engineers
                   </Link>
@@ -202,10 +208,14 @@ export default function Home() {
 
         {/* 3. Continuous Marquee scrolling clients */}
         <section className="py-12 bg-slate-100 dark:bg-[#060911] overflow-hidden border-b border-gray-200 dark:border-white/5 relative">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.85] dark:opacity-[0.06] pointer-events-none"
-            style={{ backgroundImage: 'url("/client_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.06] pointer-events-none">
+            <Image
+              src="/client_bg.png"
+              alt="Client Background"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
           <div className="flex flex-col gap-4 relative z-10">
             <span className="text-[10px] text-gray-500 dark:text-gray-400 font-mono tracking-widest uppercase text-center block mb-2">
               Trusted by Leading Corporate Entities & Outage Managers
@@ -218,10 +228,14 @@ export default function Home() {
         
         {/* About Summary Block */}
         <section className="min-h-screen flex flex-col justify-center relative overflow-hidden py-12">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0"
-            style={{ backgroundImage: 'url("/engineers_at_work_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0">
+            <Image
+              src="/engineers_at_work_bg.png"
+              alt="Engineers at work"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
@@ -264,10 +278,14 @@ export default function Home() {
 
         {/* Services Summary Block */}
         <section className="min-h-screen flex flex-col justify-center relative overflow-hidden py-12">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0"
-            style={{ backgroundImage: 'url("/services_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0">
+            <Image
+              src="/services_bg.png"
+              alt="Services Background"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6 lg:order-2">
@@ -313,10 +331,14 @@ export default function Home() {
 
         {/* Simulator Section */}
         <section className="min-h-screen flex flex-col justify-center relative overflow-hidden py-12">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0"
-            style={{ backgroundImage: 'url("/turbine_hero_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0">
+            <Image
+              src="/turbine_hero_bg.png"
+              alt="Simulator Background"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
               <span className="text-xs text-secondary font-mono tracking-widest uppercase mb-1 bg-white/60 dark:bg-gray-900/60 backdrop-blur px-3 py-1.5 rounded-lg inline-block shadow-md">Rotor Flow Simulator</span>
@@ -333,10 +355,14 @@ export default function Home() {
 
         {/* Projects & Map Summary Block */}
         <section className="min-h-screen flex flex-col justify-center relative overflow-hidden py-12">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0"
-            style={{ backgroundImage: 'url("/projects_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0">
+            <Image
+              src="/projects_bg.png"
+              alt="Projects Background"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
@@ -379,10 +405,14 @@ export default function Home() {
 
         {/* Why Choose Us & Safety Summary Block */}
         <section className="min-h-screen flex flex-col justify-center relative overflow-hidden py-12">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0"
-            style={{ backgroundImage: 'url("/whychooseus_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0">
+            <Image
+              src="/whychooseus_bg.png"
+              alt="Why Choose Us Background"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6 lg:order-2">
@@ -433,10 +463,14 @@ export default function Home() {
 
         {/* Contact Summary Block */}
         <section className="min-h-screen flex flex-col justify-center relative overflow-hidden py-12">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0"
-            style={{ backgroundImage: 'url("/contactus_bg.png")' }}
-          />
+          <div className="absolute inset-0 opacity-[0.85] dark:opacity-[0.18] pointer-events-none z-0">
+            <Image
+              src="/contactus_bg.png"
+              alt="Contact Background"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-2xl mx-auto">
             <span className="text-xs text-secondary font-mono tracking-widest uppercase mb-1 bg-white/60 dark:bg-gray-900/60 backdrop-blur px-3 py-1.5 rounded-lg inline-block shadow-md">Get In Touch</span>
             <div className="mt-4 mb-8 max-w-2xl mx-auto">
@@ -456,7 +490,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/contact"
-                className="bg-white hover:bg-gray-50 dark:bg-white/5 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold px-6 py-3 rounded-xl text-sm border border-gray-200 dark:border-white/10 transition-colors shadow-sm dark:shadow-none"
+                className="bg-slate-200 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-gray-900 dark:text-white font-semibold px-6 py-3 rounded-xl text-sm border border-gray-300 dark:border-white/10 transition-colors shadow-sm dark:shadow-none"
               >
                 View Offices Map
               </Link>
